@@ -15,7 +15,6 @@
 package service
 
 import (
-	_ "yunion.io/x/onecloud/pkg/cloudevent/policy"
 	_ "yunion.io/x/onecloud/pkg/compute/policy"
 	_ "yunion.io/x/onecloud/pkg/image/policy"
 	_ "yunion.io/x/onecloud/pkg/keystone/policy"
