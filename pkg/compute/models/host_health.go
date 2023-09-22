@@ -26,8 +26,9 @@ import (
 	api "yunion.io/x/onecloud/pkg/apis/compute"
 	"yunion.io/x/onecloud/pkg/cloudcommon/db/lockman"
 	"yunion.io/x/onecloud/pkg/cloudcommon/etcd"
-	"yunion.io/x/onecloud/pkg/cloudmon/misc"
+
 	"yunion.io/x/onecloud/pkg/mcclient/auth"
+	"yunion.io/x/onecloud/pkg/util/netutils2"
 )
 
 var hostHealthChecker *SHostHealthChecker
@@ -132,7 +133,7 @@ func (h *SHostHealthChecker) onHostUnhealthy(ctx context.Context, hostname strin
 	defer lockman.ReleaseRawObject(ctx, api.HOST_HEALTH_LOCK_PREFIX, hostname)
 	host := HostManager.FetchHostByHostname(hostname)
 	if host != nil {
-		pingRes, err := misc.Ping([]string{host.AccessIp}, 3, 10, false)
+		pingRes, err := netutils2.Ping([]string{host.AccessIp}, 3, 10, false)
 		if err != nil {
 			log.Errorf("failed ping dest host %s", hostname)
 			return

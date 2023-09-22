@@ -28,7 +28,6 @@ import (
 	"yunion.io/x/pkg/util/httputils"
 	"yunion.io/x/pkg/util/version"
 
-	"yunion.io/x/onecloud/pkg/esxi/options"
 	"yunion.io/x/onecloud/pkg/mcclient/auth"
 	"yunion.io/x/onecloud/pkg/mcclient/modules/compute"
 )
@@ -76,7 +75,7 @@ func FetchYunionmeta(ctx context.Context) (*SSkuResourcesMeta, error) {
 	}
 	s := auth.GetAdminSession(ctx, "")
 	transport := httputils.GetTransport(true)
-	transport.Proxy = options.Options.HttpTransportProxyFunc()
+	//transport.Proxy = options.Options.HttpTransportProxyFunc()
 	client := &http.Client{Transport: transport}
 	resp, err := compute.OfflineCloudmeta.GetSkuSourcesMeta(s, client)
 	if err != nil {

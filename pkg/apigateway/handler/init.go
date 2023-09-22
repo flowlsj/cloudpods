@@ -16,7 +16,6 @@ package handler
 
 import (
 	_ "yunion.io/x/onecloud/pkg/mcclient/modules/ansible"
-	_ "yunion.io/x/onecloud/pkg/mcclient/modules/cloudnet"
 	_ "yunion.io/x/onecloud/pkg/mcclient/modules/cloudproxy"
 	modules "yunion.io/x/onecloud/pkg/mcclient/modules/compute"
 	_ "yunion.io/x/onecloud/pkg/mcclient/modules/devtool"

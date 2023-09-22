@@ -20,6 +20,7 @@ import (
 	"io/ioutil"
 	"path"
 	"time"
+	"yunion.io/x/onecloud/pkg/util/netutils2"
 
 	"yunion.io/x/log"
 	"yunion.io/x/pkg/errors"
@@ -27,7 +28,6 @@ import (
 	api "yunion.io/x/onecloud/pkg/apis/compute"
 	"yunion.io/x/onecloud/pkg/cloudcommon/etcd"
 	common_options "yunion.io/x/onecloud/pkg/cloudcommon/options"
-	"yunion.io/x/onecloud/pkg/cloudmon/misc"
 	"yunion.io/x/onecloud/pkg/hostman/hostinfo/hostconsts"
 	"yunion.io/x/onecloud/pkg/hostman/hostutils"
 	"yunion.io/x/onecloud/pkg/hostman/options"
@@ -151,7 +151,7 @@ func (m *SHostHealthManager) OnKeepaliveFailure() {
 }
 
 func (m *SHostHealthManager) networkAvailable() bool {
-	res, err := misc.Ping(m.masterNodesIps, 3, 10, false)
+	res, err := netutils2.Ping(m.masterNodesIps, 3, 10, false)
 	if err != nil {
 		log.Errorf("failed ping master nodes %s", res)
 		return true

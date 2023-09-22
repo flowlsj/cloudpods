@@ -19,7 +19,6 @@ import (
 
 	"yunion.io/x/onecloud/pkg/apigateway/handler"
 	"yunion.io/x/onecloud/pkg/apigateway/options"
-	"yunion.io/x/onecloud/pkg/apis/cloudid"
 	"yunion.io/x/onecloud/pkg/appsrv"
 )
 
@@ -77,7 +76,7 @@ func (app *Application) InitHandlers() *Application {
 		app.BackendServiceProxyHandler = handler.NewBackendServiceProxyHandler("/api/s/<service>")
 	}
 
-	app.CloudIdSAMLHandler = handler.NewProxyHandlerWithService(cloudid.SAML_IDP_PREFIX, cloudid.SERVICE_TYPE)
+	//app.CloudIdSAMLHandler = handler.NewProxyHandlerWithService(cloudid.SAML_IDP_PREFIX, cloudid.SERVICE_TYPE)
 
 	return app
 }
