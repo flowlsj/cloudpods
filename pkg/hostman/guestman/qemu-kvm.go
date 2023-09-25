@@ -2363,6 +2363,8 @@ func (s *SKVMGuestInstance) optimizeOom() error {
 }
 
 func (s *SKVMGuestInstance) SyncMetadata(meta *jsonutils.JSONDict) error {
+	log.Infof("meta is: %v", meta)
+	log.Infof("s.Desc is %v", s.Desc)
 	metaMap, _ := meta.GetMap()
 	for k, v := range metaMap {
 		s.Desc.Metadata[k] = v.String()
